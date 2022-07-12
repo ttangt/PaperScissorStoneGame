@@ -1,0 +1,98 @@
+service: game-aws-nodejs
+frameworkVersion: '3'
+
+# Output service endpoint plugin
+plugins:
+  - serverless-stack-output
+
+# Output service endpoint
+custom:
+  output:
+    handler: output.output
+    file: ./output.json
+  tableName: 'players-data-table-${sls:stage}'
+  tableEmail: 'players-email-table-${sls:stage}'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - "*"
+  environment:
+    PLAYERS_TABLE: ${self:custom.tableName}
+    EMAILS_TABLE: ${self:custom.tableEmail}
+
+functions:
+  generate:
+    # webapi gateway
+    handler: handler/sendEmail.sendPassword
+    events:
+      - http:
+          path: generate
+          method: post
+          cors: true
+  # webapi gateway
+  choose:
+    handler: handler/chooseOne.chooseOne
+    events:
+      - http:
+          path: choose
+          method: post
+          cors: true
+  # webapi gateway
+  query:
+    handler: handler/queryResult.queryResult
+    events:
+      - http:
+          path: query
+          method: post
+          cors: true
+
+resources:
+  Resources:
+    UsersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: email
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.tableName}
+
+        # email key for secondary query
+        GlobalSecondaryIndexes:
+          - IndexName: email-index
+            KeySchema:
+              - AttributeName: email
+                KeyType: HASH
+            Projection:
+              ProjectionType: ALL
+
+    # player registration table
+    PlayersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: email
+            AttributeType: S
+        KeySchema:
+          - AttributeName: email
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.tableEmail}              

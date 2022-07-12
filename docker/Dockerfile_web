@@ -1,0 +1,4 @@
+FROM httpd
+WORKDIR /usr/local/apache2/htdocs
+COPY ./websources/resources resources
+COPY ./websources/index.html index.html

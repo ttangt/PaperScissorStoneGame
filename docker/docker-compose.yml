@@ -1,0 +1,18 @@
+version: '3'
+services:
+  sls:
+    build:
+      context: .
+      dockerfile: Dockerfile_sls
+      args:
+        - AWS_KEY=${AWS_KEY}
+        - AWS_SECRET=${AWS_SECRET}
+        - AWS_PROFILE=${AWS_PROFILE}
+        - SLS_ACTION=${SLS_ACTION}
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile_web
+    ports:
+      - "8080:80"
+    restart: always

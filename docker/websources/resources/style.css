@@ -1,0 +1,47 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* ? x 3 grids */
+    justify-items: center;
+}
+
+.grid-item {
+    font-size: 2em;
+}
+
+#oppenent h2{
+    color: rgb(65, 42, 165);
+}
+
+.button {
+    border: none;
+    padding: 10px 32px;
+    font-size: 1.5em;
+}
+
+a {
+    color: black;
+}
+
+a:link {
+    text-decoration: none
+}
+
+#paper {
+    background-color: rgb(0, 255, 255);
+}
+
+#scissor {
+    background-color: rgb(128, 128, 128);
+}
+
+#stone {
+    background-color: rgb(255, 255, 0);
+}
+
+#result h2{
+    color: brown;
+}
+
+#email {
+    background-color: rgb(0, 255, 42);
+}

@@ -1,0 +1,25 @@
+FROM node:16-alpine
+
+RUN apk update
+RUN npm install -g serverless
+
+ARG AWS_KEY
+ARG AWS_SECRET
+ARG AWS_PROFILE
+ARG SLS_ACTION
+
+# RUN echo $AWS_KEY
+# RUN echo $AWS_SECRET
+# RUN echo $AWS_PROFILE
+# RUN echo $SLS_ACTION
+
+RUN sls config credentials \
+    --provider aws \
+    --key $AWS_KEY \
+    --secret $AWS_SECRET \
+    --profile $AWS_PROFILE
+
+COPY ./final-aws-node-todo final-aws-node-todo
+WORKDIR ./final-aws-node-todo
+
+RUN sls $SLS_ACTION
