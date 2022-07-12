@@ -1,3 +1,5 @@
+const awsEndpoint = "https://6j46umlmq6.execute-api.us-east-1.amazonaws.com/dev"
+
 const CHOICES = ["paper", "scissor", "stone"]
 
 var emailForm = document.getElementById('emailForm')
@@ -64,7 +66,7 @@ emailForm.addEventListener('submit', function(e) {
 
     alert("Password has been emailed")
 
-    fetch("https://6j46umlmq6.execute-api.us-east-1.amazonaws.com/dev/generate",{
+    fetch(awsEndpoint + "/generate",{
         method: 'POST',
         body: JSON.stringify({
             "email": player.value,
@@ -80,7 +82,7 @@ emailForm.addEventListener('submit', function(e) {
 
 // save result to dynamoDB table
 function saveResult(email, player, opponent, result) {
-    fetch("https://6j46umlmq6.execute-api.us-east-1.amazonaws.com/dev/choose",{
+    fetch(awsEndpoint + "/choose",{
         method: 'POST',
         body: JSON.stringify({
             "email": email,
@@ -105,7 +107,7 @@ resultsForm.addEventListener('submit', function(e) {
 
     alert("Please check your email!")
 
-    fetch("https://6j46umlmq6.execute-api.us-east-1.amazonaws.com/dev/query",{
+    fetch(awsEndpoint + "/query",{
         method: 'POST',
         body: JSON.stringify({
             "email": player.value,
