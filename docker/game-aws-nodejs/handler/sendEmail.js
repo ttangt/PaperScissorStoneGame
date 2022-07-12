@@ -8,10 +8,6 @@ const sgMail = require("@sendgrid/mail") // sendgrid email server
 require('dotenv').config()
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
-// SENDGRID_API_KEY="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"
-// sgMail.setApiKey(SENDGRID_API_KEY)
-
-// sendEmail("test@gmail.com", array)
 function sendEmail(receiver, array) {
     let html = "<table><tr><td>Result</td><td>Player</td><td>Oppontent</td><td>Play At</td></tr>" // email content
 

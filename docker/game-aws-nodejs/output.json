@@ -1,7 +1,7 @@
 {
-  "GenerateLambdaFunctionQualifiedArn": "arn:aws:lambda:us-east-1:554252918746:function:game-aws-nodejs-dev-generate:2",
-  "ChooseLambdaFunctionQualifiedArn": "arn:aws:lambda:us-east-1:554252918746:function:game-aws-nodejs-dev-choose:2",
-  "QueryLambdaFunctionQualifiedArn": "arn:aws:lambda:us-east-1:554252918746:function:game-aws-nodejs-dev-query:2",
+  "GenerateLambdaFunctionQualifiedArn": "arn:aws:lambda:us-east-1:554252918746:function:game-aws-nodejs-dev-generate:3",
+  "ChooseLambdaFunctionQualifiedArn": "arn:aws:lambda:us-east-1:554252918746:function:game-aws-nodejs-dev-choose:3",
+  "QueryLambdaFunctionQualifiedArn": "arn:aws:lambda:us-east-1:554252918746:function:game-aws-nodejs-dev-query:3",
   "ServiceEndpoint": "https://6j46umlmq6.execute-api.us-east-1.amazonaws.com/dev",
   "ServerlessDeploymentBucketName": "game-aws-nodejs-dev-serverlessdeploymentbucket-s9k4oesu5c7l"
 }
