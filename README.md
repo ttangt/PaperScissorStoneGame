@@ -16,7 +16,7 @@ We use serverless framework to build AWS cloudformation stacks for a scissor pap
 
 - Go to [Scissor Paper Stone](ttant.github.io/PaperScissorGame/files/websources/)
 
-- 
+- ![Tutorial](https://github.com/ttangt/PaperScissorGame/blob/master/tutorial.png?raw=true)
 
 - ENJOY :)
 
