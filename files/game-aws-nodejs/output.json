@@ -1,0 +1,7 @@
+{
+  "GenerateLambdaFunctionQualifiedArn": "arn:aws:lambda:us-east-1:554252918746:function:game-aws-nodejs-dev-generate:4",
+  "ChooseLambdaFunctionQualifiedArn": "arn:aws:lambda:us-east-1:554252918746:function:game-aws-nodejs-dev-choose:4",
+  "QueryLambdaFunctionQualifiedArn": "arn:aws:lambda:us-east-1:554252918746:function:game-aws-nodejs-dev-query:4",
+  "ServiceEndpoint": "https://6j46umlmq6.execute-api.us-east-1.amazonaws.com/dev",
+  "ServerlessDeploymentBucketName": "game-aws-nodejs-dev-serverlessdeploymentbucket-s9k4oesu5c7l"
+}
